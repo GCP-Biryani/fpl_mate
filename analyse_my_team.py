@@ -111,19 +111,31 @@ def get_my_team(team_id):
     df_watchlist = df_watchlist[['web_name','element_type','now_cost','selected_by_percent','total_points','points_per_game','form','goals_scored','expected_goals','assists','expected_assists','expected_goal_involvements','goal_involvements','ep_next','clean_sheets','bonus','ict_index_rank']]
     #
     df_watchlist_xgi = df_watchlist.sort_values('expected_goal_involvements',ascending=False).head(10)
-    table_xfi = tabulate(df_watchlist_xgi,showindex=False,headers=tabulate_headers,tablefmt='fancy_grid')
+    df_watchlist_xgi = df_watchlist_xgi[['web_name','element_type','now_cost','selected_by_percent','total_points','goals_scored','expected_goals','assists','expected_assists','expected_goal_involvements','goal_involvements']]
+    table_xfi_headers = ["Name",'Position','Price','selected by(%)','total points','goals','xG','asists','xA','Expected GI','Delivered GI']
+    table_xfi = tabulate(df_watchlist_xgi,showindex=False,headers=table_xfi_headers,tablefmt='fancy_grid')
     #
     df_watchlist_form = df_watchlist.sort_values('form',ascending=False).head(10)
-    table_form = tabulate(df_watchlist_form,showindex=False,headers=tabulate_headers,tablefmt='fancy_grid')
+    table_form_headers = ["Name",'Position','Price','selected by(%)','total points','form','goals','asists','Delivered GI']
+    df_watchlist_form = df_watchlist_form[['web_name','element_type','now_cost','selected_by_percent','total_points','form','goals_scored','assists','goal_involvements']]
+    table_form = tabulate(df_watchlist_form,showindex=False,headers=table_form_headers,tablefmt='fancy_grid')
     #
     df_watchlist_ppg = df_watchlist.sort_values('points_per_game',ascending=False).head(10)
-    table_ppg = tabulate(df_watchlist_ppg,showindex=False,headers=tabulate_headers,tablefmt='fancy_grid')
+    table_ppg_headers = ["Name",'Position','Price','selected by(%)','total points', "PPG",'goals','asists','Delivered GI']
+    df_watchlist_ppg = df_watchlist_ppg[['web_name','element_type','now_cost','selected_by_percent','total_points','points_per_game','goals_scored','assists','goal_involvements']]
+    table_ppg = tabulate(df_watchlist_ppg,showindex=False,headers=table_ppg_headers,tablefmt='fancy_grid')
     #
     df_watchlist_ict = df_watchlist.sort_values('ict_index_rank',ascending=True).head(10)
-    table_ict = tabulate(df_watchlist_ict,showindex=False,headers=tabulate_headers,tablefmt='fancy_grid')
+    table_ict_headers = ["Name",'Position','Price','selected by(%)','total points','goals','xG','asists','xA','Expected GI','Delivered GI','clean sheets','total bonus','ICT rank']
+    df_watchlist_ict = df_watchlist_ict[['web_name','element_type','now_cost','selected_by_percent','total_points','goals_scored','expected_goals','assists','expected_assists','expected_goal_involvements','goal_involvements','clean_sheets','bonus','ict_index_rank']]
+    
+    table_ict = tabulate(df_watchlist_ict,showindex=False,headers=table_ict_headers,tablefmt='fancy_grid')
     #
     df_watchlist_next_ep = df_watchlist.sort_values('ep_next',ascending=False).head(10)
-    table_next_ep = tabulate(df_watchlist_next_ep,showindex=False,headers=tabulate_headers,tablefmt='fancy_grid')
+    table_next_ep_headers = ["Name",'Position','Price','selected by(%)','total points','goals','xG','asists','xA','Expected GI','Delivered GI','Next GW xP']
+    df_watchlist_next_ep = df_watchlist_next_ep[['web_name','element_type','now_cost','selected_by_percent','total_points','goals_scored','expected_goals','assists','expected_assists','expected_goal_involvements','goal_involvements','ep_next']]
+    
+    table_next_ep = tabulate(df_watchlist_next_ep,showindex=False,headers=table_next_ep_headers,tablefmt='fancy_grid')
     
 
 
