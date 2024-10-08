@@ -82,5 +82,5 @@ enter_analysis = st.button("Click to get started")
 if enter_analysis:
     d = {'team_id':team_id}
     df = pd.DataFrame(d,index=[0])
-    df.to_csv('data/team_id.csv')
+    df.to_csv('team_id.csv')
     switch_page("Your_team")

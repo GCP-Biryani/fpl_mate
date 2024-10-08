@@ -9,10 +9,10 @@ st.set_page_config(
 )
 #
 CURR_GW = st.session_state.CURR_GW
-team = pd.read_csv("data/team_id.csv")
+team = pd.read_csv("team_id.csv")
 team_id = team['team_id'][0]
 #
-players_df = pd.read_csv("data/players_data.csv")
+players_df = pd.read_csv("players_data.csv")
 #
 
 # sidebar
@@ -34,7 +34,7 @@ response = requests.get(url)
 data = response.json()
 picks = data.get("picks", [])
 picks_df = pd.DataFrame(picks)
-picks_df.to_csv('data/picks.csv')
+picks_df.to_csv('picks.csv')
 picks_df = picks_df['element'].to_list()
 
 # User team Details & leagues
