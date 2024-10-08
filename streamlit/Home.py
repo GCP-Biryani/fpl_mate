@@ -70,7 +70,7 @@ st.markdown(
     """
 )
 # Get data
-subprocess.run([f"{sys.executable}", "./get_data.py"])
+subprocess.run([f"{sys.executable}", "get_data.py"])
 #
 st.markdown(":white_check_mark:")
 #
