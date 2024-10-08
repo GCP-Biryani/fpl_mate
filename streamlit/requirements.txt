@@ -1,5 +1,6 @@
+streamlit
+streamlit-extras
 requests
 pandas
-tabulate
 plotly
 nbformat
