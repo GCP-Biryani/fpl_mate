@@ -4,6 +4,7 @@ import pandas as pd
 import requests
 import subprocess
 import sys
+import os
 
 
 url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
@@ -59,11 +60,23 @@ st.markdown(
     - Top-10 watchlist based on multiple factors (best of the list)
     """
 )
+# Create data directory
+if not os.path.exists('data'):
+   os.makedirs('data')
+#
+st.markdown(
+"""##### 	:hourglass_flowing_sand:
+    Please wait , while the data is being loaded from FPL API, Once data is loaded, you'll see text box to enter your FPL ID, to analyse your team
+    """
+)
 # Get data
 subprocess.run([f"{sys.executable}", "get_data.py"])
 #
+st.markdown(":white_check_mark:")
+#
 team_id = st.text_input("Enter your FPL ID")
 st.session_state.team_id = team_id
+#
 #
 enter_analysis = st.button("Click to get started")
 if enter_analysis:
