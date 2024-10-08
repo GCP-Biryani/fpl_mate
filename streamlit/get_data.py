@@ -38,7 +38,7 @@ fixtures_df['team_a'] = fixtures_df['team_a'].map(teams_df.set_index('id').name)
 fixtures_df['team_h'] = fixtures_df['team_h'].map(teams_df.set_index('id').name)
 
 # save 
-fixtures_df.to_csv('fixtures_list.csv', index=False)
+fixtures_df.to_csv('./fixtures_list.csv', index=False)
 
 #
 def fixtures_by_team(fixtures, team, gameweek):
@@ -79,4 +79,4 @@ players_df['next_5_avg_FDRs'] = players_df['next_5_FDRs'].apply(lambda x: np.rou
 players_df['next_3'] = players_df['team'].apply(lambda x: list(fixtures_by_team(fixtures_going_forward, x, CURR_GW+3)['opponent']))
 players_df['next_5'] = players_df['team'].apply(lambda x: list(fixtures_by_team(fixtures_going_forward, x, CURR_GW+5)['opponent']))
 players_df = players_df.astype({"next_3": str, "next_5": str, "next_3_avg_FDRs": float, "next_5_avg_FDRs": float})
-players_df.to_csv('players_data.csv', index=False)
+players_df.to_csv('./players_data.csv', index=False)

@@ -70,7 +70,7 @@ st.markdown(
     """
 )
 # Get data
-subprocess.run([f"{sys.executable}", "get_data.py"])
+subprocess.run([f"{sys.executable}", "./get_data.py"])
 #
 st.markdown(":white_check_mark:")
 #
@@ -82,5 +82,5 @@ enter_analysis = st.button("Click to get started")
 if enter_analysis:
     d = {'team_id':team_id}
     df = pd.DataFrame(d,index=[0])
-    df.to_csv('team_id.csv')
+    df.to_csv('./team_id.csv')
     switch_page("Your_team")

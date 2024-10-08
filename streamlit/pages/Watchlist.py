@@ -5,8 +5,8 @@ import pandas as pd
 #
 CURR_GW = st.session_state.CURR_GW
 #
-players_df = pd.read_csv("players_data.csv")
-picks_df = pd.read_csv('picks.csv')
+players_df = pd.read_csv("./players_data.csv")
+picks_df = pd.read_csv('./picks.csv')
 picks_df = picks_df['element'].to_list()
 #
 # page config
