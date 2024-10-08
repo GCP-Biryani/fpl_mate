@@ -9,8 +9,7 @@ st.set_page_config(
 )
 #
 CURR_GW = st.session_state.CURR_GW
-team = pd.read_csv("./team_id.csv")
-team_id = team['team_id'][0]
+team_id = st.session_state.team_id
 #
 players_df = pd.read_csv("./players_data.csv")
 #
