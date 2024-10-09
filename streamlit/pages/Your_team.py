@@ -66,27 +66,26 @@ Your team rank is : """
     + str(overall_rank)
     + "."
 )
-
+st.divider()
 st.markdown(
-    """**Your team performance stats**
+    """**Your team & mini-league stats**
 """
 )
-
 #
 df_my_team = players_df[players_df.id.isin(picks_df)]
 df_my_team = df_my_team[['web_name','element_type','now_cost','selected_by_percent','total_points','points_per_game','form','goals_scored','expected_goals','assists','expected_assists','expected_goal_involvements','goal_involvements','ep_next','clean_sheets','bonus','next_3','next_3_avg_FDRs','next_5','next_5_avg_FDRs']]
-st.dataframe(df_my_team,hide_index=True,use_container_width=False,height=550,column_config={"web_name":"Name","element_type":"Position","now_cost":"Cost","selected_by_percent":"Selected by (%)","total_points":"Total points","points_per_game":"PPG","goals_scored":"GS","expected_goals":"xG","assists":"A","expected_assists":"xA","expected_goal_involvements":"xGI","goal_involvements":"actial Goal involvements","ep_next": "xP(next GW)","clean_sheets":"CS"})
 
-
-st.markdown(
-    """**Your team mini-league performance**
-"""
-)
 # Classic Leagues
 classic_df = pd.json_normalize(data['leagues']['classic'])
 classic_df = classic_df[['name','entry_rank','entry_last_rank','entry_percentile_rank']]
-st.dataframe(classic_df,hide_index=True,use_container_width=False)
 #
+##########
+tab1, tab2 = st.tabs(["Your team performance indicators", "Mini-League performance"])
+with tab1:
+    st.dataframe(df_my_team,hide_index=True,use_container_width=False,height=550,column_config={"web_name":"Name","element_type":"Position","now_cost":"Cost","selected_by_percent":"Selected by (%)","total_points":"Total points","points_per_game":"PPG","goals_scored":"GS","expected_goals":"xG","assists":"A","expected_assists":"xA","expected_goal_involvements":"xGI","goal_involvements":"actial Goal involvements","ep_next": "xP(next GW)","clean_sheets":"CS"})
+with tab2:
+    st.dataframe(classic_df,hide_index=True,use_container_width=False)
+##########
 get_watchlist = st.button("Click to get your watchlist")
 if get_watchlist:
     switch_page("Watchlist")
