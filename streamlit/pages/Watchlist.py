@@ -80,9 +80,3 @@ st.markdown(
 Click on any column to sort by that stat """
 )
 st.dataframe(df_watchlist_table,hide_index=True,use_container_width=False,height=1025,width=1200)
-
-#
-#
-get_graphs = st.button("Click to see analysis graphs")
-if get_graphs:
-    switch_page("Graphs")
