@@ -35,6 +35,8 @@ picks = data.get("picks", [])
 picks_df = pd.DataFrame(picks)
 picks_df.to_csv('./picks.csv')
 picks_df = picks_df['element'].to_list()
+if 'picks_df' not in st.session_state:
+    st.session_state.picks_df = picks_df
 
 # User team Details & leagues
 url = f"https://fantasy.premierleague.com/api/entry/{team_id}"

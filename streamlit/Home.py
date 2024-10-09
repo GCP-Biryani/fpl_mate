@@ -75,7 +75,8 @@ subprocess.run([f"{sys.executable}", "streamlit/get_data.py"])
 st.markdown(":white_check_mark:")
 #
 team_id = st.text_input("Enter your FPL ID")
-st.session_state.team_id = team_id
+if 'team_id' not in st.session_state:
+    st.session_state.team_id = team_id
 #
 #
 enter_analysis = st.button("Click to get started")
